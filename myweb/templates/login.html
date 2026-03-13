@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login / Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5DC; /* Light beige */
+            color: #5C4033; /* Dark brown text */
+            text-align: center;
+            margin-top: 100px;
+        }
+        .container {
+            background-color: #DEB887; /* Burlywood/Yellow-brown */
+            padding: 30px;
+            border: 2px solid #8B4513; /* Saddle brown border */
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+        }
+        input { padding: 8px; margin: 10px 0; border: 1px solid #8B4513; }
+        button {
+            padding: 10px 15px;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button:hover { background-color: #A0522D; }
+        .message { color: #800000; font-weight: bold; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Welcome</h2>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="POST">
+            <label>Username:</label><br>
+            <input type="text" name="username"><br>
+            
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+            
+            <button type="submit" name="action" value="login">Login</button>
+            <button type="submit" name="action" value="register">Register</button>
+        </form>
+    </div>
+
+</body>
+</html>

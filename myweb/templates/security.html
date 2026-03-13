@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Panel</title>
+    <style>
+        body { background-color: #F5F5DC; color: #5C4033; font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 50%; margin-bottom: 30px; }
+        th, td { border: 1px solid #8B4513; padding: 10px; text-align: left; }
+        th { background-color: #DEB887; }
+        .btn { padding: 10px 20px; background-color: #8B4513; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Security Dashboard</h1>
+
+    <h3>Currently Online aaaaaaaaaaa</h3>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Current Page</th>
+        </tr>
+        {% for user, current_page in online_users.items() %}
+        <tr>
+            <td>{{ user }}</td>
+            <td>{{ current_page }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>All Registered Users</h3>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        {% for user, pw in all_users.items() %}
+        <tr>
+            <td>{{ user }}</td>
+            <td>{{ pw }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/mainpage" class="btn">Back to Main Page</a>
+
+</body>
+</html>

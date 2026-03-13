@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        /* This matches your yellow-brown theme */
+        body { 
+            background-color: #F5F5DC; 
+            color: #5C4033; 
+            text-align: center; 
+            font-family: Arial, sans-serif;
+        }
+        img {
+            max-width: 400px;
+            border: 5px solid #8B4513; /* Brown border */
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome</h1>
+
+    <img src="{{ url_for('static', filename='march-7th-evernight.gif') }}" alt="March 7th GIF">
+
+    <br><br>
+    
+    <a href="/login" style="color: #8B4513; font-weight: bold;">Click here to login</a>
+
+</body>
+</html>

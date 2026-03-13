@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+    <style>
+        body { background-color: #F5F5DC; color: #5C4033; font-family: Arial, sans-serif; padding: 20px; }
+        .btn { display: inline-block; padding: 10px 20px; background-color: #8B4513; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+        .btn-security { background-color: #B8860B; /* Dark Goldenrod */ }
+    </style>
+</head>
+<body>
+
+    <h1>Hello, {{ username }}!</h1>
+    <p>Welcome to the main page.</p>
+
+    {% if username == 'endmin' %}
+        <a href="/security" class="btn btn-security">Security (Admin Panel)</a>
+    {% endif %}
+    
+    <br>
+    <a href="/logout" class="btn">Logout</a>
+
+</body>
+</html>
