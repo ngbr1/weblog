@@ -1,20 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
-# A secret key is required to use sessions and flash messages
+
 app.secret_key = 'super_secret_key_change_this_later'
 
-# Our simple in-memory database
-# users stores username/password. endmin is pre-registered.
+
 users = {'endmin': 'sixseven'} 
-# online_users tracks who is logged in and what page they are on
+
 online_users = {} 
 
-# This runs before every single page load to track the user's location
+
 @app.before_request
 def track_user():
     if 'username' in session:
-        # We don't want to track them loading background images or CSS
+      
         if not request.path.startswith('/static'):
             online_users[session['username']] = request.path
 
@@ -25,7 +24,7 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Check which button was clicked (Login or Register)
+  
         action = request.form.get('action')
         user = request.form.get('username')
         pw = request.form.get('password')
@@ -41,7 +40,7 @@ def login():
                 
         elif action == 'login':
             if user in users and users[user] == pw:
-                # Success! Save them to the session
+              
                 session['username'] = user
                 return redirect(url_for('mainpage'))
             else:
@@ -52,7 +51,7 @@ def login():
 
 @app.route('/mainpage')
 def mainpage():
-    # Kick them back to login if they aren't signed in
+   
     if 'username' not in session:
         return redirect(url_for('login'))
     
@@ -60,7 +59,7 @@ def mainpage():
 
 @app.route('/security')
 def security():
-    # Only allow endmin to see this page
+   
     if session.get('username') != 'endmin':
         return redirect(url_for('mainpage'))
     
@@ -69,7 +68,7 @@ def security():
 @app.route('/logout')
 def logout():
     user = session.pop('username', None)
-    # Remove them from the online tracker when they log out
+   
     if user in online_users:
         del online_users[user]
     return redirect(url_for('home'))
